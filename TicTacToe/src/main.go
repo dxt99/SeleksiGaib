@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
+	"time"
 )
 
 func main() {
 	initGame()
-	p := rand.Intn(100) % 2
+	p := time.Now().Unix()
+	p = p % 2
 	// TODO: randomize first player, 1 is always AI
 	for winner() == -1 && !full() {
 		if p == 1 {
