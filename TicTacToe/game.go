@@ -13,6 +13,18 @@ func initGame() {
 	}
 }
 
+// checks whether all tiles are filled
+func full() bool {
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 3; j++ {
+			if game[i][j] == -1 {
+				return false
+			}
+		}
+	}
+	return true
+}
+
 // checks current winner of game, -1 if none
 func winner() int {
 	for i := 0; i < 3; i++ {
@@ -32,7 +44,7 @@ func winner() int {
 		return game[0][0]
 	}
 	if game[0][2] == game[1][1] && game[0][2] == game[2][0] && game[0][2] != -1 {
-		return game[0][0]
+		return game[0][2]
 	}
 	return -1
 }
