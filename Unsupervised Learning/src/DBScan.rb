@@ -29,7 +29,32 @@ def DBScan(points, eps, minPts)
         adj = getNeighbours(points, i, eps)
         if adj.length+1 < minPts
             label[i] = -1
+            noiseCount += 1
             next
         end
+        curCluster +=1
+        label[i] = curCluster
+        for idx in adj do
+            if label[idx]==-1
+                label[idx]=curCluster
+                noiseCount-=1
+            end
+            if label[idx]!=0 
+                next
+            end
+            label[idx] = curCluster
+            curAdj = getNeighbours(points, idx, eps)
+            if curAdj.length+1 < minPts
+                next
+            end
+            for newIdx in curAdj do
+                if adj.include? newIdx
+                    next
+                end
+                adj.append(newIdx)
+            end
+        end
     end
+    puts "Number of clusters: #{curCluster}"
+    puts "Number of noise: #{noiseCount}"
 end
