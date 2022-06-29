@@ -55,6 +55,17 @@ def DBScan(points, eps, minPts)
             end
         end
     end
+    # count points in each cluster
+    cnts = Array.new(curCluster+1, 0)
+    for i in 0...label.length do
+        if i!=-1
+            cnts[label[i]]+=1
+        end
+    end
     puts "Banyak cluster: #{curCluster}"
     puts "Banyak noise: #{noiseCount}"
+    puts "Banyak titik di masing-masing cluster: "
+    for i in 0...curCluster do
+        puts "Cluster #{i+1}: #{cnts[i+1]}"
+    end
 end
