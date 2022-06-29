@@ -6,8 +6,8 @@ def normalize(points)
     maxi = Array.new(labels, 0)
     mini = Array.new(labels, 1e9)
     # update max and mins
-    for i in 0...points.length-1 do
-        for j in 0...labels-1 do
+    for i in 0...points.length do
+        for j in 0...labels do
             points[i][j] = points[i][j].to_f
             if points[i][j]>maxi[j]
                 maxi[j] = points[i][j]
@@ -18,8 +18,8 @@ def normalize(points)
         end
     end
     # normalize values
-    for i in 0...points.length-1 do
-        for j in 0...labels-1 do
+    for i in 0...points.length do
+        for j in 0...labels do
             points[i][j] = points[i][j] - mini[j]
             points[i][j] = (points[i][j])/(maxi[j]-mini[j])
         end

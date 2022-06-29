@@ -2,12 +2,12 @@ def getNeighbours(points, idx, eps)
     # returns indices of points that are < eps
     # uses euclidian dist
     indices = Array.new()
-    for i in 0...points.length-1 do
+    for i in 0...points.length do
         if i==idx
             next
         end
         dist = 0
-        for j in 0...points[0].length-1 do
+        for j in 0...points[0].length do
             dist += (points[i][j]-points[idx][j]) ** 2
         end
         if dist <= eps**2
@@ -22,7 +22,7 @@ def DBScan(points, eps, minPts)
     label = Array.new(n, 0) #0 is undef, -1 is noise
     noiseCount = 0
     curCluster = 0
-    for i in 0...n-1 do
+    for i in 0...n do
         if label[i] != 0
             next
         end
@@ -55,6 +55,6 @@ def DBScan(points, eps, minPts)
             end
         end
     end
-    puts "Number of clusters: #{curCluster}"
-    puts "Number of noise: #{noiseCount}"
+    puts "Banyak cluster: #{curCluster}"
+    puts "Banyak noise: #{noiseCount}"
 end
