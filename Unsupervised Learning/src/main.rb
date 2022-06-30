@@ -1,4 +1,5 @@
 require "./src/DBScan.rb"
+require "./src/KMeans.rb"
 require "csv"
 
 def normalize(points)
@@ -45,7 +46,11 @@ if ch == 1
     minPts = gets[0...-1].to_f
     DBScan(data, eps, minPts)
 elsif ch == 2
-    puts "KMeans"
+    print "Nilai K: "
+    k = gets[0...-1].to_i
+    print "Maximum iterations: "
+    maxItr = gets[0...-1].to_i
+    KMeans(data, k, maxItr)
 elsif ch == 3
     puts "KMedoids"
 else
