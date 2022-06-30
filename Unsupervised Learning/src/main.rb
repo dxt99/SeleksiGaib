@@ -1,5 +1,6 @@
 require "./src/DBScan.rb"
 require "./src/KMeans.rb"
+require "./src/KMedoids.rb"
 require "csv"
 
 def normalize(points)
@@ -52,7 +53,9 @@ elsif ch == 2
     maxItr = gets[0...-1].to_i
     KMeans(data, k, maxItr)
 elsif ch == 3
-    puts "KMedoids"
+    print "Nilai K: "
+    k = gets[0...-1].to_i
+    KMedoids(data, k)
 else
     puts "Invalid command"
 end

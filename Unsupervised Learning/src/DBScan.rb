@@ -58,7 +58,7 @@ def DBScan(points, eps, minPts)
     # count points in each cluster
     cnts = Array.new(curCluster+1, 0)
     for i in 0...label.length do
-        if i!=-1
+        if label[i]!=-1
             cnts[label[i]]+=1
         end
     end
